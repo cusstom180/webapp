@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+*{
+	margin: 0;
+	padding: 0;
+}
+
+form {
+	width: 60%;
+	margin: auto;
+}
+label {
+	text-transform: uppercase;	
+	display: block;
+}
+
+input {
+	display: block
+}body form input {
+}
+body form input {
+}
