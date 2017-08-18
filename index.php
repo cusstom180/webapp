@@ -7,12 +7,12 @@
 </head>
 
 <body>
-	<form action="/data.php" method="post">
+	<form action="data.php" method="post">
 		<label>user name</label>
 		<input type="text" name="username" >
 		<label>password</label>
-		<input type="password" name="username" >
-		<input type="submit" formmethod="POST" >
+		<input type="password" name="password" >
+		<input type="submit" >
 	</form>
 </body>
 </html>
