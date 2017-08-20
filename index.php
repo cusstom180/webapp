@@ -2,8 +2,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Crossfit DV8 | Login</title>
 <link href="/css/style.css" rel="stylesheet" type="text/css">
+<title>Crossfit DV8 | Login</title>
+
 </head>
 
 <body>
