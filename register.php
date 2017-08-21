@@ -1,4 +1,4 @@
-//to have user register for app
+<!-- to have user register for app -->
 
 <!doctype html>
 <html>
@@ -9,7 +9,7 @@
 </head>
 
 <body>
-	<form>
+	<form action="indb.php" method="post">
 		<label>First Name</label>
 		<input type="text" name="first" placeholder="first name" >
 		<label>Last Name</label>
@@ -23,16 +23,7 @@
 		<input type="submit" value="Submit" >
 	</form>
 	
-	<div class="report" >
-		<?php 
-			if($success != "") {
-				echo $success;
-			}
-			else {
-				echo $insertfail;
-			}
-		?>
-	</div>
+	
 
 </body>
 </html>

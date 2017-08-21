@@ -2,11 +2,11 @@
 
 //variables for db connct
 $host = 'localhost';
-$username = 'webappadmin';
-$password = '123456789';
+$dbusername = 'webappadmin';
+$dbpassword = '123456789';
 $db = 'webapp';
 
-$con = mysqli_connect($host, $username, $password,$db);
+$con = mysqli_connect($host, $dbusername, $dbpassword,$db);
 
 if (mysqli_connect_errno())
   {
