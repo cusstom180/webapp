@@ -11,21 +11,23 @@ $user = mysqli_real_escape_string($con, $_POST['user']);
 $password = md5(mysqli_real_escape_string($con, $_POST['password']));
 $email = mysqli_real_escape_string($con, $_POST['email']);
 
+#check if username already exists
+$useridcheck = "SELECT "
+
+
 #insert statement for new user
 $insert = "INSERT INTO `user_account` (`user_id`, `first`, `last`, `user_name`, `password`, `email`) 
 			VALUES (NULL, '$first', '$last', '$user', '$password', '$email')";
 
 #select query based on password user inputted
-$selectpassword = "SELECT password FROM webapp WHERE password = '$password'";
+$selectuser = "SELECT user_name, password FROM webapp WHERE user_name = '$user'";
 
-if (mysqli_query($con, $insert)) {
-	$success = "Welcome to the app";
-}
-	else {
-	$insertfail = "Something went wrong and you suck at life";
-}
+$userresult = mysqli_query($con, $selectuser);
 
-$passwordresult = mysqli_query($con, $selectpassword);
+$array = mysql_fetch_assoc($userresult);
+	printf("user: %s password; %s", $array["user"], $array["password"]);
+
+
 
 
 	
@@ -41,9 +43,10 @@ $passwordresult = mysqli_query($con, $selectpassword);
 </head>
 
 <body>
-	<?php echo $passwordresult; ?>
+	<?php echo $user; ?>
+	<?php echo $userresult; ?>
 	<?php 
-		if ($password == $passwordresult) {
+		if ($user == $userresult) {
 			
 			echo 'Welcome to the app';
 		}

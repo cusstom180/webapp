@@ -26,7 +26,7 @@ if (mysqli_connect_errno())
 
 <body>
 hi
-	<?php echo $errorcode ?>
+	
 </body>
 </html>
 -->
