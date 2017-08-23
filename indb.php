@@ -12,15 +12,19 @@ $password = md5(mysqli_real_escape_string($con, $_POST['password']));
 $email = mysqli_real_escape_string($con, $_POST['email']);
 
 #check if username already exists
-$useridcheck = "SELECT * FROM `user_account` WHERE `user_name` = '$user'";
+$useridcheckquery = "SELECT * FROM `user_account` WHERE `user_name` = '$user'";
 
-$userquerycheck = mysqli_fetch_assoc($con, $useridcheck);
+$useridcheck = mysqli_query($con, $useridcheckquery);
 
-if ($userquerycheck[])
+$userquerycheck = mysqli_fetch_assoc($useridcheck);
 
-
-#insert statement for new user
-$insert = "INSERT INTO `user_account` (`user_id`, `first`, `last`, `user_name`, `password`, `email`) 
+if ($userquerycheck['email'] == $email) {
+	
+	header('register.php');
+}	
+else {
+	
+	$insert = "INSERT INTO `user_account` (`user_id`, `first`, `last`, `user_name`, `password`, `email`) 
 			VALUES (NULL, '$first', '$last', '$user', '$password', '$email')";
 
 if (mysqli_query($con, $insert)) {
@@ -28,18 +32,31 @@ if (mysqli_query($con, $insert)) {
 } else {
     echo "Error: " . $insert . "<br>" . mysqli_error($con);
 }
+}
+
+
+
+#insert statement for new user
+#$insert = "INSERT INTO `user_account` (`user_id`, `first`, `last`, `user_name`, `password`, `email`) 
+#			VALUES (NULL, '$first', '$last', '$user', '$password', '$email')";
+
+#if (mysqli_query($con, $insert)) {
+#    echo "New record created successfully";
+#} else {
+#   echo "Error: " . $insert . "<br>" . mysqli_error($con);
+#}
 
 #select query based on password user inputted
-$selectuser = "SELECT * FROM `user_account` WHERE `user_name` = '$user'";
+#$selectuser = "SELECT * FROM `user_account` WHERE `user_name` = '$user'";
 
-$userresult = mysqli_query($con, $selectuser);
+#$userresult = mysqli_query($con, $selectuser);
 
 
 
-if(mysqli_num_rows($userresult) > 0) {
-	$rowcount = mysqli_num_rows($userresult);
+if(mysqli_num_rows($useridcheck) > 0) {
+	$rowcount = mysqli_num_rows($useridcheck);
 		echo $rowcount;
-	while ($array = mysqli_fetch_assoc($userresult)) {
+	while ($array = mysqli_fetch_assoc($useridcheck)) {
 		echo $array['user_name'] . " " . $array['email'];
 	}
 }else {
