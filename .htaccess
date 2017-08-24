@@ -1,0 +1,13 @@
+# turn engine rewrite on
+RewriteEngine on
+
+# rewrite for register.php
+RewriteRule ^register register.php [NC,L]
+#NC makes the rule non case sentive
+#L makes this the last rule that this specific condition will match
+
+# rewrite for nikesh.php
+RewriteRule ^nikesh nikesh.php [NC,L]
+
+# rewrite for nikesh.php?first=xxxx&last=xxxx
+RewriteRule ^nikesh/([a-zA-Z]+)/([a-zA-Z]+) nikesh.php?first=$1&last=$2 [NC,L]
