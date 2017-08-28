@@ -10,4 +10,4 @@ RewriteRule ^register register.php [NC,L]
 RewriteRule ^nikesh nikesh.php [NC,L]
 
 # rewrite for nikesh.php?first=xxxx&last=xxxx
-RewriteRule ^nikesh/([a-zA-Z]+)/([a-zA-Z]+) nikesh.php?first=$1&last=$2 [NC,L]
+RewriteRule ^nikesh/([a-zA-Z]+)/([a-zA-Z]+) nikesh.php?first=$1&last=$2 [QSA] 

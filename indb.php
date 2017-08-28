@@ -84,7 +84,7 @@ if(mysqli_num_rows($useridcheck) > 0) {
 	<?php echo $user; ?>
 	
 	<?php 
-		echo $array['user_name'] . " " . $array['email'];
+		#echo $array['user_name'] . " " . $array['email'];
 
 	?>
 	
