@@ -2,31 +2,40 @@
 
 include('connect.php');
 
+$id = '';
 #check if value is entered in textbox
 $delid = isset($_GET['delid']);
 if($delid) {
-	$delid = $_GET['delid'];
+	$id = $_GET['delid'];
 }
 
 #SQL query and collecting the data for ID entered for user
-$searchquery = "SELECT * FROM `user_account` WHERE `user_id` = '$delid' ";
+$searchquery = "SELECT * FROM `user_account` WHERE `user_id` = '$id' ";
 
 $searchresult = mysqli_query($con, $searchquery);
 
 $searcharray = mysqli_fetch_assoc($searchresult);
 
 #check if delete button submitted
-$delbut = isset($_GET['delbut']);
-if($delbut) {
-	$delbut = $_GET['delbut'];
-}
+#$delbut = isset($_GET['delbut']);
+#if($delbut) {
+#	$delbut = $_GET['delbut'];
+#}
 
-$delstat = "DELETE FROM `user_account` WHERE `user_id` = '$delid' ";
+$validate = '';
 
-$deletequery = mysqli_query($con, $delstat);
+if (isset($_GET['delbut'])) {
+	
+	echo 'delete button is set';
+	$delbut = $delid;
+	
+	$delstat = "DELETE FROM `user_account` WHERE `user_account`.`user_id` = '$id'  ";
 
+	$deletequery = mysqli_query($con, $delstat);	
 
-
+	$validate = 'User has been deleted';
+	}
+	
 ?>
 
 <!doctype html>
@@ -50,7 +59,8 @@ $deletequery = mysqli_query($con, $delstat);
 	<?php echo $rows = mysqli_num_rows($searchresult); ?>
 	<?php if (mysqli_num_rows($searchresult)) { ?>
 	
-	<table>
+
+	<table >
 		<tr>
 			<th>ID</th>
 			<th>First</th>
@@ -62,11 +72,15 @@ $deletequery = mysqli_query($con, $delstat);
 			<td><?php echo $searcharray['first']; ?></td>
 			<td><?php echo $searcharray['last']; ?></td>
 			<td><?php echo $searcharray['email']; ?></td>
-			<td>delete<input type="submit" name="delbut" formaction="delete.php" formmethod="get" value="Delete"></td>
+			<td><a href="delete.php?userid=<?php echo $searcharray['user_id'] ?>"> <button type="button">Delete</button> </a></td>
 		</tr>
 		
 	</table>
 
+	
 	<?php } ?>
+	<?php echo $validate . '<br>'; ?>
+	<?php echo 'delete button ' . $delbut . '<br>'; ?>
+	<?php echo $delid; ?>
 </body>
 </html>
