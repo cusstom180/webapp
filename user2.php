@@ -8,8 +8,6 @@ $allquery = "SELECT `user_id`, `first`, `last`, `user_name`, `email` FROM `user_
 
 $allresult = mysqli_query($con, $allquery);
 
-$allarray = mysqli_fetch_assoc($allresult);
-
 ?>
 
 <!doctype html>
@@ -23,32 +21,26 @@ $allarray = mysqli_fetch_assoc($allresult);
 
 <?php  
 		
-		$count = mysqli_num_rows($allresult);
-	echo $count;
-	?>
-		
-		<table>
-			<tr>
-			<?php foreach (array_keys($allarray) as $keys) {
-				echo '<th>' . $keys . '</th>';
-			} ?>
-			</tr>
-			<tr>
-				<td><?php $allarray['user_id'] ?></td>
-			</tr>
-			
-			
-<?php print_r(array_values($allarray)) ?>
-				<br>
-				<?php print_r($allarray);?>
-				<br>
-		
-	
-		</table>
-		<?php var_dump($allarray) ?>
-		
-			<!--<a href="delete.php?userid=<?php echo $allarray['user_id'] ?>"> <button type="button">Delete</button> </a> -->
-	
+	echo '<table>';
+	echo '<tr>';
+	echo '<th>ID</th>';
+	echo '<th>First</th>';
+	echo '<th>Last</th>';
+	echo '<th>User name</th>';
+	echo '<th>Email</th>';
+	echo '</tr>';
+	while ($row = mysqli_fetch_array($allresult)) {
+	echo '<tr>';
+	echo '<td>'.($row['user_id'])."</td>";
+    echo '<td>'.($row['first']).'</td>';
+	echo '<td>'.($row['last']).'</td>';
+	echo '<td>'.($row['user_name']).'</td>';
+	echo '<td>'.($row['email']).'</td>';
+	echo '<td><a href="delete.php?userid='.$row['user_id'].'"> <button type="button">Delete</button> </a></td>';
+	echo '</tr>';
+	}
 
+	echo "</table>";
+?>
 </body>
 </html>
