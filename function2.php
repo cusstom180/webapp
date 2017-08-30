@@ -14,9 +14,11 @@ function print_array($arrayarray, $arrayresult) {
 		for ($x = 0; $x < $count; $x++) {
 			
 			echo '<tr>';
+			echo $x;
 			foreach ($arrayarray as $master) {
 			#echo '<tr>';
             echo '<td>' . $master . '</td>';
+				echo $x;
 			}
         	echo '</tr>';
 			
@@ -28,6 +30,8 @@ function print_array($arrayarray, $arrayresult) {
 		echo '</table>';
 		return;
 	}
+
+
 	
 
 ?>
