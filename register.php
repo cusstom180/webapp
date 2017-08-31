@@ -20,7 +20,8 @@
 		<input type="password" name="password" placeholder="password" >
 		<label>Email</label>
 		<input type="email" name="email" placeholder="email" >
-		<input type="submit" value="Submit" >
+		<input type="submit" value="Register" >
+		<input type="submit" value="Edit" >
 	</form>
 	
 	
