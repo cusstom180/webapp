@@ -34,12 +34,12 @@ if (isset($_GET['userid'])) {
 </head>
 
 <body>
-	<form action=
+	<form method="post" action=
 		<?php if(isset($_GET['userid'])) { 
 			echo 'edit.php'; 
 		} else { 
 			echo 'insert.php';} ?>
-		  method="post">
+		  >
 		<label>First Name</label>
 		<input type="text" name="first" 
 			<?php if(isset($_GET['userid'])) {

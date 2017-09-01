@@ -37,7 +37,7 @@ $allresult = mysqli_query($con, $allquery);
 	echo '<td>'.($row['user_name']).'</td>';
 	echo '<td>'.($row['email']).'</td>';
 	echo '<td><a href="delete.php?userid='.$row['user_id'].'"> <button type="button">Delete</button> </a></td>';
-	echo '<td><a href="edit.php?userid='.$row['user_id'].'"> <button type="button">Edit</button> </a></td>';
+	echo '<td><a href="addedit.php?userid='.$row['user_id'].'"> <button type="button">Edit</button> </a></td>';
 	echo '</tr>';
 	}
 
