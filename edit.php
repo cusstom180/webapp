@@ -4,24 +4,16 @@
 include('connect.php');
 
 //escape variables for user
+$userid = mysqli_real_escape_string($con, $_POST['userid']);
 $first = mysqli_real_escape_string($con, $_POST['first']);
 $last = mysqli_real_escape_string($con, $_POST['last']);
 $user = mysqli_real_escape_string($con, $_POST['user']);
-$password = md5(mysqli_real_escape_string($con, $_POST['password']));
 $email = mysqli_real_escape_string($con, $_POST['email']);
 
+$editstat = "UPDATE `user_account` SET `first` = '$first', `last` = '$last', `user_name` = '$user', `email` = '$email' WHERE `user_id` = '$userid' ";
 
+$editquery = mysqli_query($con, $editstat);
 
-	
-$insert = "INSERT INTO `user_account` (`user_id`, `first`, `last`, `user_name`, `password`, `email`) 
-			VALUES (NULL, '$first', '$last', '$user', '$password', '$email')";
-
-if (mysqli_query($con, $insert)) {
-	echo "New record created successfully";
-} else {
-	echo "Error: " . $insert . "<br>" . mysqli_error($con);
-}
-	
-#header('user.php');
+header('Location: user.php');
 
 ?>

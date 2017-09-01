@@ -9,37 +9,15 @@ if (isset($_GET['userid'])) {
 	$idarray = mysqli_fetch_assoc($idresult);
 }
 
-#function add_value()
-
-
-
-
-# if nothing is passed display placeholder and register
-
-
-
-
-
-
 ?>
 
-
-
-<!doctype html>
-<html>
-<head>
-<meta charset="UTF-8">
-<link href="css/style.css" rel="stylesheet" type="text/css">
-<title>user register</title>
-</head>
+<?php include ('header.php'); ?>
 
 <body>
-	<form method="post" action=
-		<?php if(isset($_GET['userid'])) { 
-			echo 'edit.php'; 
-		} else { 
-			echo 'insert.php';} ?>
-		  >
+	<form method="post" action= '<?php if(isset($_GET['userid'])) {echo 'edit.php'; } else {echo 'insert.php';}?>'>
+		<?php if(isset($idarray['user_id'])) { ?>
+		<input type="hidden" name="userid" value="<?php echo $idarray['user_id'] ?>" > 
+		<?php } ?>
 		<label>First Name</label>
 		<input type="text" name="first" 
 			<?php if(isset($_GET['userid'])) {

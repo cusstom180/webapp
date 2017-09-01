@@ -3,37 +3,33 @@
 include('connect.php');
 
 //escape variables for user
-$userid = mysqli_real_escape_string($con, $_POST['userid']);
+#$userid = mysqli_real_escape_string($con, $_POST['userid']);
 $first = mysqli_real_escape_string($con, $_POST['first']);
 $last = mysqli_real_escape_string($con, $_POST['last']);
 $user = mysqli_real_escape_string($con, $_POST['user']);
+$password = mysqli_real_escape_string($con, $_POST['password']);
 $email = mysqli_real_escape_string($con, $_POST['email']);
 
 
-#check if username already exists
-$useridcheckquery = "SELECT * FROM `user_account` WHERE `user_name` = '$user'";
+#check if email already exists
+$useridcheckquery = "SELECT * FROM `user_account` WHERE `email` = '$email'";
 
 $useridcheck = mysqli_query($con, $useridcheckquery);
 
-$userquerycheck = mysqli_fetch_assoc($useridcheck);
+#$userquerycheck = mysqli_fetch_assoc($useridcheck);
 
-if ($userquerycheck['email'] == $email) {
-	
-	header('addedit.php');
-}	
+if (mysqli_num_rows($useridcheck) > 0) {
+	#echo mysqli_num_rows($useridcheck);
+	header('Location: addedit.php');
+}	else {
 
+		$insert = "INSERT INTO `user_account` (`user_id`, `first`, `last`, `user_name`, `password`, `email`) 
+					VALUES (NULL, '$first', '$last', '$user', '$password', '$email')";
 
-echo $userid;
-echo $first;
-echo $last;
-echo $user;
-echo $email;
+		$editquery = mysqli_query($con, $insert);
 
-$editstat = "UPDATE `user_account` SET `first` = '$first', `last` = '$last', `user_name` = '$user', `email` = '$email' WHERE `user_id` = '$userid' ";
-
-$editquery = mysqli_query($con, $editstat);
-
-header('Location: user.php');
+		header('Location: user.php');
+}
 
 
 
