@@ -15,7 +15,7 @@ $usercheckquery = "SELECT * FROM `user_account` WHERE `user_name` = '$user' and 
 $result = mysqli_query($con, $usercheckquery);
 
 if (mysqli_num_rows($result) == 1) {
-	echo 'there is a result';
+	header('Location: user');
 } else {
 	$incorretPwUrl = 'index.php/?login=1';
 	print $incorretPwUrl;

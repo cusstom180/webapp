@@ -9,14 +9,7 @@ print $login; */
 ?>
 
 
-<!doctype html>
-<html>
-<head>
-<meta charset="UTF-8">
-<link href="css/style.css" rel="stylesheet" type="text/css">
-<title>Crossfit DV8 | Login</title>
-
-</head>
+<?php include('header.php'); ?>
 
 <body>
 	<form action="data.php" method="post">

@@ -10,12 +10,7 @@ $allresult = mysqli_query($con, $allquery);
 
 ?>
 
-<!doctype html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Untitled Document</title>
-</head>
+<?php include('header.php'); ?>
 
 <body>
 
@@ -38,6 +33,7 @@ $allresult = mysqli_query($con, $allquery);
 	echo '<td>'.($row['email']).'</td>';
 	echo '<td><a href="delete.php?userid='.$row['user_id'].'"> <button type="button">Delete</button> </a></td>';
 	echo '<td><a href="addedit.php?userid='.$row['user_id'].'"> <button type="button">Edit</button> </a></td>';
+	echo '<td><a href="workout.php?userid='.$row['user_id'].'"> <button type="button">Workout</button> </a></td>';
 	echo '</tr>';
 	}
 

@@ -29,3 +29,13 @@ input[type=submit] {
 	background-color: #8BF685;
 	border-radius: 5px;
 }
+
+table {
+    border: 1px solid #8BF685;
+    margin: auto;
+    margin-top: 20px;
+}
+
+td {
+    padding: 5px;
+}

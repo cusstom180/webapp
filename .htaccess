@@ -11,3 +11,9 @@ RewriteRule ^nikesh nikesh.php [NC,L]
 
 # rewrite for nikesh.php?first=xxxx&last=xxxx
 RewriteRule ^nikesh/([a-zA-Z]+)/([a-zA-Z]+) nikesh.php?first=$1&last=$2 [QSA] 
+
+# rewrite for addedit.php
+RewriteRule ^addedit addedit.php [NC,L]
+
+# rewrite for user.php
+RewriteRule ^user user.php [NC,L]

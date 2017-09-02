@@ -7,7 +7,7 @@ include('connect.php');
 $first = mysqli_real_escape_string($con, $_POST['first']);
 $last = mysqli_real_escape_string($con, $_POST['last']);
 $user = mysqli_real_escape_string($con, $_POST['user']);
-$password = mysqli_real_escape_string($con, $_POST['password']);
+$password = md5(mysqli_real_escape_string($con, $_POST['password']));
 $email = mysqli_real_escape_string($con, $_POST['email']);
 
 
