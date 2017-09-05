@@ -2,7 +2,7 @@
 
 include('connect.php');
 
-include('function2.php');
+#include('function2.php');
 
 $allquery = "SELECT `user_id`, `first`, `last`, `user_name`, `email` FROM `user_account` ";
 
