@@ -49,5 +49,10 @@
 		padding: 4px;
 		background: #8BF685;
 	}
+	
+	label input {
+	width: 10%;
+	display: inline
+	}
 
 </style>
