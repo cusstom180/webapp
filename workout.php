@@ -6,7 +6,7 @@ include('connect.php');
 $bs='Back squat';
 $fs='Front squat';
 $dl='Dead lift';
-$sp='Shoulder Press';
+$sh='Shoulder Press';
 $pp='Push press';
 # if userid is passed then select from db and display in value and display edit button
 if (isset($_GET['userid'])) {
@@ -31,9 +31,6 @@ function checkbox_echo($string, $id, $connect) {
 			echo  '';
 		}
 	}
-	
-	
-	#return;
 }
 # need to write a loop the will check the values
 #	name	workout	
@@ -43,6 +40,26 @@ function checkbox_echo($string, $id, $connect) {
 # write a query to pull from the athele workout table for alw ident with the user id of $id 
 # then if the result for the query are backsquat then the backsquat button is checked.
 # then pass the alw ident as the value for the checkbox
+#work_id = 1 = backsquat
+$bsquery = "SELECT * FROM `athlete_workout` WHERE `work_id` = 1 AND `user_id` = '$id' ";
+#work_id = 1 = frontsquat
+$fsquery = "SELECT * FROM `athlete_workout` WHERE `work_id` = 2 AND `user_id` = '$id' ";
+#work_id = 1 = deadlift
+$dlquery = "SELECT * FROM `athlete_workout` WHERE `work_id` = 3 AND `user_id` = '$id' ";
+#work_id = 1 = shoulder
+$shquery = "SELECT * FROM `athlete_workout` WHERE `work_id` = 4 AND `user_id` = '$id' ";
+#work_id = 1 = pushpress
+$ppquery = "SELECT * FROM `athlete_workout` WHERE `work_id` = 5 AND `user_id` = '$id' ";
+
+function checked_key_value($query, $con) {
+$result = mysqli_query($con, $query);
+$array = Mysqli_fetch_assoc($result);
+if (isset($array['work_id'])) {
+	echo $array['alw_ident'];
+}else {
+			echo  'insert';
+		}
+}
 ?>
 
 <?php include('header.php'); ?>
@@ -76,11 +93,11 @@ function checkbox_echo($string, $id, $connect) {
 	<form action="update.php" method="post" >
 		<label><?php echo $idarray['First'].' '.$idarray['Last']; ?></label>
 		
-		<label><input type="checkbox" name="backsquat" value="backsquat" <?php checkbox_echo($bs, $id, $con); ?> >Back squat</label>
-		<label><input type="checkbox" name="frontsquat" value="frontsquat"  <?php checkbox_echo($fs, $id, $con); ?>  >Front squat</label>
-		<label><input type="checkbox" name="deadlift" value="deadlift"  <?php checkbox_echo($dl, $id, $con); ?>  >Dead lift</label>
-		<label><input type="checkbox" name="shoulder" value="shoulder"  <?php checkbox_echo($sp, $id, $con); ?>  >Shoulder press</label>
-		<label><input type="checkbox" name="presspush" value="presspush" <?php checkbox_echo($pp, $id, $con); ?>  >Press press</label>
+		<label><input type="checkbox" name="backsquat" value="<?php checked_key_value($bsquery, $con); ?>" <?php checkbox_echo($bs, $id, $con); ?> >Back squat</label>
+		<label><input type="checkbox" name="frontsquat" value="<?php checked_key_value($fsquery, $con); ?> "  <?php checkbox_echo($fs, $id, $con); ?> >Front squat</label>
+		<label><input type="checkbox" name="deadlift" value="<?php checked_key_value($dlquery, $con); ?>"   <?php checkbox_echo($dl, $id, $con); ?> >Dead lift</label>
+		<label><input type="checkbox" name="shoulder" value="<?php checked_key_value($shquery, $con); ?>"   <?php checkbox_echo($sh, $id, $con); ?> >Shoulder press</label>
+		<label><input type="checkbox" name="presspush" value="<?php checked_key_value($ppquery, $con); ?>"  <?php checkbox_echo($pp, $id, $con); ?> >Press press</label>
 		<input type="hidden" name="id" value="<?php echo $idarray['ID']; ?>" >
 		<input type="Submit" value="Update" >
 	</form>
