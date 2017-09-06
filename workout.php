@@ -40,6 +40,9 @@ function checkbox_echo($string, $id, $connect) {
 #	1		1, 2
 #	2		1,2,4
 
+# write a query to pull from the athele workout table for alw ident with the user id of $id 
+# then if the result for the query are backsquat then the backsquat button is checked.
+# then pass the alw ident as the value for the checkbox
 ?>
 
 <?php include('header.php'); ?>
@@ -72,12 +75,13 @@ function checkbox_echo($string, $id, $connect) {
 	
 	<form action="update.php" method="post" >
 		<label><?php echo $idarray['First'].' '.$idarray['Last']; ?></label>
-		<input="hidden" name="id" value="<?php echo $idarray['ID']; ?>" >
+		
 		<label><input type="checkbox" name="backsquat" value="backsquat" <?php checkbox_echo($bs, $id, $con); ?> >Back squat</label>
 		<label><input type="checkbox" name="frontsquat" value="frontsquat"  <?php checkbox_echo($fs, $id, $con); ?>  >Front squat</label>
 		<label><input type="checkbox" name="deadlift" value="deadlift"  <?php checkbox_echo($dl, $id, $con); ?>  >Dead lift</label>
 		<label><input type="checkbox" name="shoulder" value="shoulder"  <?php checkbox_echo($sp, $id, $con); ?>  >Shoulder press</label>
 		<label><input type="checkbox" name="presspush" value="presspush" <?php checkbox_echo($pp, $id, $con); ?>  >Press press</label>
+		<input type="hidden" name="id" value="<?php echo $idarray['ID']; ?>" >
 		<input type="Submit" value="Update" >
 	</form>
 </body>

@@ -2,8 +2,8 @@
 
 include('connect.php');
 
-$first = $_GET["first"];
-$last = $_GET["last"];
+$first = $["first"];
+$last = $["last"];
 
 ?>
 

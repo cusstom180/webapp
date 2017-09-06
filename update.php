@@ -1,17 +1,35 @@
 <?php
 
-$id = $_POST['id'];
-$bs = $_POST['backsquat'];
-$fs = $_POST['frontsquat'];
-$dl = $_POST['deadlift'];
-$sh = $_POST['shoulder'];
-$pp = $_POST['presspush'];
+if (isset($_POST['id'])) {
+	$id = $_POST['id'];
+	echo $id."<br>";
+}
+if (isset($_POST['backsquat'])) {
+	$bs = $_POST['backsquat'];
+	echo $bs."<br>";
+}
+if (isset($_POST['frontsquat'])) {
+	$fs = $_POST['frontsquat'];
+	echo $fs."<br>";
+}
+if (isset($_POST['deadlift'])) {
+	$dl = $_POST['deadlift'];
+	echo $dl."<br>";
+}
+if (isset($_POST['shoulder'])) {
+	$sh = $_POST['shoulder'];
+	echo $sh."<br>";
+}
+if (isset($_POST['presspush'])) {
+	$pp = $_POST['presspush'];
+	echo $pp."<br>";
+}
 
-echo $id."<br>";
-echo $bs."<br>";
-echo $fs."<br>";
-echo $dl."<br>";
-echo $sh."<br>";
-echo $pp."<br>";
+
+
+
+
+
+
 
 ?>
