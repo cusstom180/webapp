@@ -48,7 +48,7 @@ print_r($checkbox);
 		<?php for ($c = 0; $c < count($workout); $c++) { ?>
 		<label>
 			<input type="checkbox" name="workout" value="<?php  ?>" 
-				<?php if(array_keys($workout, $workout[$c])) { echo $checked; } ?> >
+				<?php if(array_keys($workout, $workout[$c]) == ) { echo $checked; } ?> >
 			<?php echo $workout[$c]['name']; ?>
 		</label>
 		

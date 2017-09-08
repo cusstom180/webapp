@@ -1,10 +1,10 @@
 <?php
 
-$login = isset($_GET['login']);
+$login = isset($['login']);
  if($login){
-$login = $_GET['login'];
+$login = $['login'];
 }  
-/* $login = $_GET['login'];
+/* $login = $['login'];
 print $login; */
 ?>
 

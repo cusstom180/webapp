@@ -34,9 +34,9 @@ include('connect.php');
 
 $id = '';
 #check if value is entered in textbox
-$delid = isset($_GET['delid']);
+$delid = isset($['delid']);
 if($delid) {
-	$id = $_GET['delid'];
+	$id = $['delid'];
 }
 
 #SQL query and collecting the data for ID entered for user
@@ -47,14 +47,14 @@ $searchresult = mysqli_query($con, $searchquery);
 $searcharray = mysqli_fetch_assoc($searchresult);
 
 #check if delete button submitted
-#$delbut = isset($_GET['delbut']);
+#$delbut = isset($['delbut']);
 #if($delbut) {
-#	$delbut = $_GET['delbut'];
+#	$delbut = $['delbut'];
 #}
 
 $validate = '';
 
-if (isset($_GET['delbut'])) {
+if (isset($['delbut'])) {
 	
 	echo 'delete button is set';
 	$delbut = $delid;
@@ -125,10 +125,10 @@ include('function2.php');
 
 # code for getting id thru URL
 #check if value is send thru URL
-$id = isset($_GET['id']);
+$id = isset($['id']);
 	if($id){
 	 
-		$id =  $_GET['id'];
+		$id =  $['id'];
 	} 
 
 #SQL query and collecting the data
@@ -139,9 +139,9 @@ $idresult = mysqli_query($con, $idquery);
 $idarray = mysqli_fetch_assoc($idresult);
 
 #code for query all users
-$choice = isset($_GET['select']);
+$choice = isset($['select']);
 if($choice){
-	$choice = $_GET['select'];
+	$choice = $['select'];
 	
 } 
 
@@ -268,11 +268,11 @@ if (mysqli_query($con, $insert)) {
 
 include('connect.php');
 
-$id = $_GET['userid'];
+$id = $['userid'];
 #check if value is entered in textbox
-$delid = isset($_GET['delid']);
+$delid = isset($['delid']);
 if($delid) {
-	$id = $_GET['delid'];
+	$id = $['delid'];
 }
 
 #SQL query and collecting the data for ID entered for user
@@ -283,14 +283,14 @@ $searchresult = mysqli_query($con, $searchquery);
 $searcharray = mysqli_fetch_assoc($searchresult);
 
 #check if delete button submitted
-#$delbut = isset($_GET['delbut']);
+#$delbut = isset($['delbut']);
 #if($delbut) {
-#	$delbut = $_GET['delbut'];
+#	$delbut = $['delbut'];
 #}
 
 $validate = '';
 
-if (isset($_GET['delbut'])) {
+if (isset($['delbut'])) {
 	
 	echo 'delete button is set';
 	$delbut = $delid;
