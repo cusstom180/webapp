@@ -48,12 +48,15 @@ if (isset($_GET['userid'])) {
 
 <?php include('header.php'); ?>
 
-<form>
+<form action="submit.php" method="post" >
+	<input  type="hidden" name="userid" value="<?php echo $id ?>" >
 	<?php foreach ($work as $key => $value) { ?>
 	<label>
-		<input type="checkbox" name="workout" value="<?php echo $key; ?>" 
+		<input id="testhidden" type="hidden" name="delete[]" value="<?php echo $key; ?>" >
+		<input id="test" type="checkbox" name="workout[]" value="<?php echo $key; ?>" 
 			<?php if(array_key_exists($key, $data)) {echo $checked;}?> >
 		<?php echo $value; ?>
 	</label>
 	<?php } ?>
+	<input type="submit" value="Enter Workout" >
 </form>
