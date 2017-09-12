@@ -6,8 +6,11 @@ include('connect.php');
 $id = $_POST['userid'];					//userid value
 $postarray = $_POST['workout'];			//workouts that are checked in checkbox
 $delarray = $_POST['delete'];			//all workouts in hidden status
+
 $checkarray = array();					//array to hold results of db query of check db for work_ident existiing already
 
+print_r('$delarray');
+echo '<br>';
 /*echo 'this is the post array ';			
 print_r($postarray);
 echo '<br>';
@@ -44,13 +47,13 @@ foreach($delarray as $k => $val) {																					//loop thru array by work
 		#$identarray = mysqli_fetch_array($identresult);															//array with the table ident for the row to be deleted
 		echo mysqli_num_rows($identresult);
 		
-		while($row = mysqli_fetch_assoc($checkarray)){ // use fetch_assoc array with key values for select all from db on userid
+		while($row = mysqli_fetch_assoc($identresult)){ // use fetch_assoc array with key values for select all from db on userid
 				#$rowPkeky = $row['alt_ident'];
 				#$rowName = $row1['work_id'];
 					$checkarray[] =  $row ;							//array for all results form db where userid is present
 			}
 			
-		print_r($identarray);
+		print_r($checkarray);
 				
 		echo 'rows form the db based on id and work ident<br>';
 		
