@@ -7,9 +7,13 @@ $workout  = array(); //saves the workout names
 $checkbox = array();
 $checked = 'checked="checked"';
 
+if(isset($_GET['success'])) {
+	$suc = 'update complete';
+} else {
+	$suc = 1;
+}
 
-
- # pull names of workout form db and looping for checkboxes
+ # pull names of workout form db and looping for checkboxes labels
 $workoutquery = "SELECT * FROM `workout` ";
 $workoutresult = mysqli_query($con, $workoutquery);
 
@@ -43,20 +47,30 @@ if (isset($_GET['userid'])) {
 	}
 }	
 
+#display athletes name above checkboxes
+$namesel = "SELECT usr.first, usr.last FROM user_account usr WHERE usr.user_id = '$id' ";
+$namequery = mysqli_query($con, $namesel);
+$title = mysqli_fetch_assoc($namequery); // use fetch_assoc 
+if (!$namequery) {
+    	die('Invalid query: ' . mysqli_error());
+	}
 
 ?>
 
 <?php include('header.php'); ?>
 
-<form action="submit.php" method="post" >
-	<input  type="hidden" name="userid" value="<?php echo $id ?>" >
-	<?php foreach ($work as $key => $value) { ?>
-	<label>
-		<input id="testhidden" type="hidden" name="delete[]" value="<?php echo $key; ?>" >
-		<input id="test" type="checkbox" name="workout[]" value="<?php echo $key; ?>" 
-			<?php if(array_key_exists($key, $data)) {echo $checked;}?> >
-		<?php echo $value; ?>
-	</label>
-	<?php } ?>
-	<input type="submit" value="Enter Workout" >
-</form>
+	<form action="submit.php" method="post" >
+		<label><?php echo $title['first'].' '.$title['last']; ?></label>
+		<input  type="hidden" name="userid" value="<?php echo $id ?>" >
+		<?php foreach ($work as $key => $value) { ?>
+		<label>
+			<input id="test" type="checkbox" name="workout[]" value="<?php echo $key; ?>" 
+				<?php if(array_key_exists($key, @$data)) {echo $checked;} ?> >
+			<?php echo $value; ?>
+		</label>
+		<?php } ?>
+		<input type="submit" value="Enter Workout" >
+		<?php if($suc != 1){echo $suc;?>
+		<a href="user"> <button type="button">Back to all users</button> </a>
+		<?php } ?>
+	</form>

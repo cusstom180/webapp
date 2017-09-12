@@ -54,5 +54,9 @@
 	width: 10%;
 	display: inline
 	}
+	
+	#wrong {
+    color: red;
+	}
 
 </style>

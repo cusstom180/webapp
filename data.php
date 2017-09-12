@@ -17,37 +17,7 @@ $result = mysqli_query($con, $usercheckquery);
 if (mysqli_num_rows($result) == 1) {
 	header('Location: user');
 } else {
-	$incorretPwUrl = 'index.php/?login=1';
-	print $incorretPwUrl;
-	header('Location: '.$incorretPwUrl);
+	$incorretPwUrl = '?login=1';
+	header('Location: index.php'.$incorretPwUrl);
 }
-/*
-$useridcheck = mysqli_query($con, $useridcheckquery);
-
-$userquerycheck = mysqli_fetch_assoc($useridcheck);
-
-if ($userquerycheck['email'] == $email) {
-	
-	$success = 'you have logged in';
-	
-}	else {
-	
-	header('Location: register.php');
-	
-	
-} */
-?>
-
-
-<!doctype html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Untitled Document</title>
-</head>
-
-<body>
-
-
-</body>
-</html>
+ ?>

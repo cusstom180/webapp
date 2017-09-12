@@ -1,11 +1,7 @@
 <?php
 
-$login = isset($['login']);
- if($login){
-$login = $['login'];
-}  
-/* $login = $['login'];
-print $login; */
+$login = isset($_GET['login']);
+$badpas = 'You have entered an incorrect password';
 ?>
 
 
@@ -13,13 +9,9 @@ print $login; */
 
 <body>
 	<form action="data.php" method="post">
-<?php 
-if ($login == 1) {
-	echo "Incorrect pw";
-}
-?>
-
-
+<?php if ($login == 1) { ?>
+	<label id="wrong" ><?php echo $badpas; ?> </label>
+	<?php } ?>
 		<label>user name</label>
 		<input type="text" name="username" >
 		<label>password</label>
