@@ -9,12 +9,24 @@ if (isset($_GET['userid'])) {
 	$idarray = mysqli_fetch_assoc($idresult);
 }
 
+if (isset($_GET['password'])) {
+	if($_GET['password'] == 1) {
+		$message = 'Email address is already in use. Please enter another email';
+	}
+	if($_GET['password'] == 2) {
+		$message = 'User name is already in use. Please enter another name';
+	}
+}
+
 ?>
 
 <?php include ('header.php'); ?>
 
 <body>
 	<form method="post" action= '<?php if(isset($_GET['userid'])) {echo 'edit.php'; } else {echo 'insert.php';}?>'>
+		<?php if(isset($message)){?>
+		<label id="wrong" ><?php echo $message; ?></label>
+		<?php } ?>
 		<?php if(isset($idarray['user_id'])) { ?>
 		<input type="hidden" name="userid" value="<?php echo $idarray['user_id'] ?>" > 
 		<?php } ?>

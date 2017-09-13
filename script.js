@@ -1,16 +1,8 @@
 $(document).ready(function(){
-	/*$(":button").click(function(){
-		$("form").css("background-color","green");
-		$("form").css("background-color","red");
-	});*/
+	$("input[type='button']").click(function (){
+		console.log("you push the button");
+	});
 	
-	
+	$("p").html("it changed the test");
 });
 
-$(document).ready(function(){
-    $("button").click(function(){
-        $("#div1").fadeToggle();
-        //$("#div2").fadeToggle("slow");
-        //$("#div3").fadeToggle(3000);
-    });
-});

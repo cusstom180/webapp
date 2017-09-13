@@ -12,15 +12,26 @@ $email = mysqli_real_escape_string($con, $_POST['email']);
 
 
 #check if email already exists
-$useridcheckquery = "SELECT * FROM `user_account` WHERE `email` = '$email'";
+/* $useridcheckquery = "SELECT * FROM `user_account` WHERE `email` = '$email'";
 
 $useridcheck = mysqli_query($con, $useridcheckquery);
 
-#$userquerycheck = mysqli_fetch_assoc($useridcheck);
+$userquerycheck = mysqli_fetch_assoc($useridcheck); */
 
-if (mysqli_num_rows($useridcheck) > 0) {
-	#echo mysqli_num_rows($useridcheck);
-	header('Location: addedit.php');
+$selonusername = "SELECT * FROM `user_account` WHERE `user_name`='$user' ";
+$onusernamequery = mysqli_query($con, $selonusername);
+
+$selonemail = "SELECT * FROM `user_account` WHERE `user_name`='$user' ";
+$onemailquery = mysqli_query($con, $selonemail);
+
+if (mysqli_num_rows($onusernamequery) > 0 || mysqli_num_rows($onemailquery) > 0 ) {
+	 if (mysqli_num_rows($onemailquery) > 0) {
+		 $incorrect = '?password=1';
+	 } 
+	 if (mysqli_num_rows($onusernamequery) > 0) {
+		 $incorrect = '?password=2';
+	 }
+	header('Location: addedit.php'.$incorrect);
 }	else {
 
 		$insert = "INSERT INTO `user_account` (`user_id`, `first`, `last`, `user_name`, `password`, `email`) 

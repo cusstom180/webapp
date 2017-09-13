@@ -18,6 +18,8 @@
 	<input type="submit" value="Enter Workout" >
 </form>
 <div id="div1" >it is working</div>
+<a>jimbob</a>
+<p>i typed something</p>
 
 </body>
 </html>
