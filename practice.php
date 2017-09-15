@@ -11,9 +11,11 @@
 	<form action="" method="post" >
 	<label>
 		<input id="testhidden" type="checkbox" name="delete[]" value="hide" >
-		<input id="test" type="checkbox" name="workout[]" value="seen" >
+		<input id="test1" type="checkbox" name="workout[]" value="seen" >
 		label
 	</label>
+	<input type="text" id="test">
+	<input type="text" id="test">
 	<input id="button" type="button" value="button" >
 	<input type="submit" value="Enter Workout" >
 </form>
