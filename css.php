@@ -59,4 +59,8 @@
     color: red;
 	}
 
+	form p {
+	color: red;
+}
+
 </style>

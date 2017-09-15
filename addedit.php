@@ -31,39 +31,44 @@ if (isset($_GET['password'])) {
 		<input type="hidden" name="userid" value="<?php echo $idarray['user_id'] ?>" > 
 		<?php } ?>
 		<label>First Name</label>
-		<input type="text" name="first" 
+		<input type="text" name="first" id="fname"
 			<?php if(isset($_GET['userid'])) {
 					echo 'value="'.$idarray['first'].'"'; 
 				} else {
 					echo 'placeholder="first name"'; 
 				} ?> >
+		<p id='fnamewrong' >Fill out field</p>
 		<label>Last Name</label>
-		<input type="text" name="last" 
+		<input type="text" name="last" id="lname"
 				<?php if(isset($_GET['userid'])) {
 					echo 'value="'.$idarray['last'].'"'; 
 				} else {
 					echo 'placeholder="last name"'; 
 				} ?> >
+		<p id='lnamewrong' >Fill out field</p>
 		<label>User Name</label>
-		<input type="text" name="user" 
+		<input type="text" name="user" id="user"
 				<?php if(isset($_GET['userid'])) {
 					echo 'value="'.$idarray['user_id'].'"'; 
 				} else {
 					echo 'placeholder="user name"'; 
 				} ?> >
 		<?php if (!isset($_GET['userid'])) { ?>
+		<p id='userwrong' >Fill out field</p>
 		<label>Password</label>
-		<input type="password" name="password" placeholder="password" >
+		<input type="password" name="password" id="pass" placeholder="password" >
 		<?php } ?>
+		<p id='passwrong' >Fill out field</p>
 		<label>Email</label>
-		<input type="email" name="email" 
+		<input type="email" name="email" id="email"
 				<?php if(isset($_GET['userid'])) {
 					echo 'value="'.$idarray['email'].'"'; 
 				} else {
 					echo 'placeholder="email"'; 
 				} ?> >
 		<?php if (!isset($_GET['userid'])) { ?>
-		<input type="submit" value="Register" >
+		<p id='emailwrong' >Use a valid email address</p>
+		<input type="submit" value="Register" id="submt" >
 		<?php } ?>
 		<?php if (isset($_GET['userid'])) { ?>
 		<input type="submit" value="Edit" >
