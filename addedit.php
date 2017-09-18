@@ -23,7 +23,7 @@ if (isset($_GET['password'])) {
 <?php include ('header.php'); ?>
 
 <body>
-	<form method="post" action= '<?php if(isset($_GET['userid'])) {echo 'edit.php'; } else {echo 'insert.php';}?>'>
+	<form id="form" method="post" action= '<?php if(isset($_GET['userid'])) {echo 'edit.php'; } else {echo 'insert.php';}?>'>
 		<?php if(isset($message)){?>
 		<label id="wrong" ><?php echo $message; ?></label>
 		<?php } ?>
@@ -60,7 +60,7 @@ if (isset($_GET['password'])) {
 		<?php } ?>
 		<p id='passwrong' >Fill out field</p>
 		<label>Email</label>
-		<input type="email" name="email" id="email"
+		<input type="text" name="email" id="email"
 				<?php if(isset($_GET['userid'])) {
 					echo 'value="'.$idarray['email'].'"'; 
 				} else {

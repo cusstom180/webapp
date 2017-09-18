@@ -3,6 +3,13 @@ $(document).ready(function(){
 	
 	$("#submt").prop("disabled", true);
 	
+	//declare varibles
+	var first;
+	var last;
+	var user;
+	var pass;
+	var email;
+	var test;
 	
 	//buttton fill out js
 	$("#fnamewrong").hide();
@@ -11,19 +18,89 @@ $(document).ready(function(){
 	$("#passwrong").hide();
 	$("#emailwrong").hide();
 	
-	
-	$("#fname").blur(function() {
+	//validation for first name field
+	$("#fname").change(function() {
 		var textfname =  $.trim( $('#fname').val() );
-		/* if (textBox == ""){
+		 if (textfname.length < 3){
 			$("#fnamewrong").show();
-		} */
-		alert(textfname);
+			 first = false;
+			 
+		} else {
+			$("#fnamewrong").hide();
+			first = true;
+			//test.push(textfname);
+		}
 	});
 	
-	$("#button").click(function(){
+	//validation for last name field
+	$("#lname").change(function() {
+		var textlname =  $.trim( $('#lname').val() );
+		 if (textlname.length < 3){
+			$("#lnamewrong").show(); 
+		} else {
+			$("#lnamewrong").hide();
+			last = true;
+			//test.push(textlname);
+		}
+	});
+	
+	//validation for user name field
+	$("#user").change(function() {
+		var textuser =  $.trim( $('#user').val() );
+		 if (textuser.length < 3){
+			$("#userwrong").show();
+		} else {
+			$("#userwrong").hide();
+			user = true;
+			//test.push(textuser);
+		}
+	});
+	
+	//validation for password field
+	$("#pass").change(function() {
+		var textpass=  $.trim( $('#pass').val() );
+		 if (textpass.length < 3){
+			$("#passwrong").show();
+		} else {
+			$("#passwrong").hide();
+			pass = true;
+			//test.push(textpass);
+		}
+	});
+	
+	//email validation
+	$("#email").change(function(){
+		var textemail = $.trim( $('#email').val() );
+		var testEmail = /^[A-Z0-9._%+-]+@([A-Z0-9-]+\.)+[A-Z]{2,4}$/i;
+		if (!testEmail.test(textemail)) {
+			$("#emailwrong").show();
+		} else {
+			$("#emailwrong").hide();
+			email = true;
+		}
+	});
+	
+	$("#form").change(function() {
+		//alert("the change worked");
+		if (((first === user) && (pass ===last)) && email) {
+				$("#submt").prop("disabled", false);
+				alert("in change if stmt");
+		} else {
+			$("#submt").prop("disabled", true);
+			alert("help");
+		}
+		
+	});
+	
+	
+});
+
+/*
+
+$("#button").click(function(){
 	 var textBox =  $.trim( $('#test3').val() );
 	 var textBox2 =  $.trim( $('#test2').val() );
-		if (textBox == ""){
+		if (textBox === ""){
 			$("#fillout1").show();
 		}
 		
@@ -32,24 +109,8 @@ $(document).ready(function(){
 		}
 		
 	});
-	
-	
-	//email validation
-	$("#fillout3").hide();
-	$("#button").click(function(){
-		var email = $.trim( $('#email').val() );
-		var testEmail = /^[A-Z0-9._%+-]+@([A-Z0-9-]+\.)+[A-Z]{2,4}$/i;
-		if (!testEmail.test(email)) {
-			$("#fillout3").show();
-		} else {
-			$("input[type='submit']").prop("disabled", false);
-		}
-	});
-	
-	
-});
 
-/*
+
 	$('input[type=text]').each(function(){
 			if (this.value === "") {
 				//alert(this.value);
